@@ -1,38 +1,503 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f1e8"><meta name="description" content="A little garden for big questions. Explore a whimsical research institute, follow the world's slowest intelligence race, and discover real AI papers."><title>The Institute of Almost Superintelligence</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
-<body><a class="skip" href="#garden">Skip to the garden</a><header><a class="wordmark" href="./" aria-label="Almost Superintelligence home"><span class="seal">a<span>∴</span></span><span>ALMOST<br>SUPERINTELLIGENCE</span></a><nav aria-label="Main"><button id="about">A small introduction <span>↗</span></button><button id="notebook" class="notebook">Field notes <span id="count">0 / 6</span></button></nav></header>
-<main><section class="intro"><div class="eyebrow"><span class="dot"></span> THE INSTITUTE IS OPEN. PROGRESS IS DEBATABLE.</div><h1>The race can wait.</h1><p>A little garden for very big questions.<br>Move things around. There are good ideas hiding underneath.</p></section>
-<section id="garden" class="garden" aria-label="Interactive research garden"><div class="scene-wrap"><svg id="scene" viewBox="0 0 1200 630" role="img" aria-label="An illustrated garden with a library, pond, greenhouse, haystack, and a very slow snail race"><defs>
-<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".032" numOctaves="3" seed="8" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/></filter>
-<filter id="soft"><feGaussianBlur stdDeviation="14"/></filter><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".15"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
-<radialGradient id="grass"><stop stop-color="#a9b78a"/><stop offset=".72" stop-color="#bdc79e"/><stop offset="1" stop-color="#d7dcc0" stop-opacity="0"/></radialGradient>
-<linearGradient id="water" x2=".7" y2="1"><stop stop-color="#86a9af"/><stop offset="1" stop-color="#456f80"/></linearGradient>
-<g id="tree"><path d="M0 0L3-83" stroke="#7d7858" stroke-width="6"/><path d="M2-43L-16-64M2-52L20-73" stroke="#7d7858" stroke-width="3"/><g fill="#8c9c72" filter="url(#rough)"><ellipse cx="-10" cy="-86" rx="26" ry="34"/><ellipse cx="16" cy="-93" rx="26" ry="36"/><ellipse cx="4" cy="-115" rx="26" ry="33"/></g></g>
-<g id="flower"><path d="M0 0L0-12" stroke="#869564" stroke-width="2"/><circle cy="-14" r="4" fill="#e7dcbb"/><circle cy="-14" r="1.5" fill="#bda058"/></g>
-<g id="snail"><path d="M-20 9Q0 4 28 8L32-6M27 6L26-7" fill="none" stroke="#6f7761" stroke-width="5" stroke-linecap="round"/><circle cx="0" cy="-2" r="14" fill="#b77558"/><path d="M6 6C-13 10-13-14 0-11S10 4 0 3S-5-5 0-3" fill="none" stroke="#e3ba89" stroke-width="2"/><circle cx="32" cy="-8" r="2" fill="#414c40"/><circle cx="25" cy="-9" r="2" fill="#414c40"/></g>
-</defs>
-<ellipse cx="602" cy="356" rx="525" ry="238" fill="url(#grass)" filter="url(#soft)"/>
-<g filter="url(#rough)"><path d="M282 328Q427 341 461 411T727 415Q857 370 894 283" fill="none" stroke="#e1d7b9" stroke-width="42" stroke-linecap="round"/><path d="M631 400Q637 302 696 257" fill="none" stroke="#e1d7b9" stroke-width="28"/><path d="M463 413Q411 470 327 477" fill="none" stroke="#e1d7b9" stroke-width="23"/></g>
-<g opacity=".17" fill="#5b6a46" filter="url(#soft)"><ellipse cx="290" cy="327" rx="120" ry="20"/><ellipse cx="891" cy="287" rx="90" ry="20"/><ellipse cx="734" cy="266" rx="65" ry="14"/></g>
-<g id="vegetation"></g>
-<!-- A modest library, with enough room for a few big ideas. -->
-<g id="cover-attention" class="movable"><g transform="translate(270 278)" filter="url(#rough)"><path d="M-72-61L30-61 67-39V40L-72 40Z" fill="#e5d8b5"/><path d="M30-61L67-39V40L30 22Z" fill="#c6ba97"/><path d="M-88-61L-22-116 51-81 77-38 28-57Z" fill="#a56650"/><path d="M-88-61L-22-116 28-57Z" fill="#bb8064"/><path d="M-22-116L51-81M-68-62L-15-104M-44-62L-4-93M-20-61L7-81" stroke="#ce987b" stroke-width="2"/><path d="M-58-37H17V22H-58Z" fill="#696e59"/><path d="M-60-9H19M-23-37V22" stroke="#ddd0a9" stroke-width="4"/><g stroke-width="7"><path d="M-50-32V-14M-40-29V-14M-31-34V-14" stroke="#b88364"/><path d="M-14-31V-14M-4-34V-14M7-30V-14" stroke="#a4b098"/><path d="M-50-3V18M-40 0V18M-30-2V18" stroke="#c6b881"/><path d="M-14 0V18M-4-3V18M7-1V18" stroke="#8ba3a4"/></g><path d="M41-20L57-12V19L41 11Z" fill="#758476"/><path d="M-83 41H43L55 49H-88Z" fill="#c2b392"/><rect x="-65" y="-56" width="87" height="15" rx="1" fill="#f3e8c9"/><text x="-21" y="-45" text-anchor="middle" font-size="9" letter-spacing="2" fill="#6d6653">LIBRARY</text></g></g>
-<!-- A pond for reflecting, computationally or otherwise. -->
-<g filter="url(#rough)"><path d="M720 429C691 389 747 327 827 331S959 346 961 393 886 463 815 456 752 461 720 429Z" fill="#c9cbb0"/><path d="M728 417C701 379 758 337 827 340S949 351 946 394 882 452 816 446 752 448 728 417Z" fill="url(#water)"/><g fill="none" stroke="#b5ced0" opacity=".45"><path d="M744 390Q777 382 802 389M850 366Q887 359 915 366M823 426Q858 418 886 423"/><ellipse cx="845" cy="390" rx="30" ry="9"/></g><g id="cover-feedback" class="movable"><g id="duck" transform="translate(845 388)"><ellipse rx="14" ry="8" fill="#f4eedb"/><circle cx="-11" cy="-9" r="7" fill="#f4eedb"/><path d="M-16-11L-25-7-16-6" fill="#c99b51"/><circle cx="-13" cy="-11" r="1.1" fill="#52564a"/><path d="M5-3L19-8 13 2" fill="#e0dcc9"/></g></g><ellipse cx="774" cy="416" rx="12" ry="5" fill="#869d70"/><path d="M774 416L786 414" stroke="#52716a"/><circle cx="773" cy="411" r="3" fill="#ead2bf"/></g>
-<!-- Compute greenhouse. -->
-<g id="cover-fewshot" class="movable"><g transform="translate(875 234)" filter="url(#rough)"><path d="M-63-40L0-83 67-41V45H-63Z" fill="#a9c2af" fill-opacity=".68" stroke="#788875" stroke-width="3"/><path d="M0-83V5L67 45M-63-40L0 5 67-41M-32-62V24M32-62V24M-63 0L0 45 67 0M0 5V45" fill="none" stroke="#e1dfc5" stroke-width="3"/><path d="M-38-14H-16V29H-38Z" fill="#6c7c72"/><path d="M-34-8H-20M-34 0H-20M-34 8H-20" stroke="#afbca0" stroke-width="2"/><circle cx="-22" cy="20" r="2" fill="#e0be70"/><path d="M16 20Q5-22 18-39M16 7Q39-24 42-9M15 2Q-1-17 2-22" fill="none" stroke="#75865c" stroke-width="4"/><path d="M8 16H29L26 35H12Z" fill="#b57e62"/></g></g>
-<!-- Telescope. -->
-<g transform="translate(688 244)" stroke="#80795e" stroke-width="4" stroke-linecap="round"><path d="M0 0L-23 39M0 0L20 40M0 0V37"/><g transform="rotate(-32)"><rect x="-29" y="-18" width="64" height="17" rx="4" fill="#bfa77e" stroke="none"/><path d="M32-20V1" stroke="#746e60" stroke-width="7"/><path d="M-37-9H-29" stroke-width="8"/></g></g>
-<!-- Haystack. Surely nothing important in here. -->
-<g id="cover-dpo" class="movable"><g transform="translate(513 276)" filter="url(#rough)"><path d="M-50 35Q-35-20 0-34 34-13 48 35Z" fill="#c9b574"/><g stroke="#a99459" fill="none" stroke-width="1.5"><path d="M-40 31Q-15-5 0-31M-22 31Q-7-12 0-31M0 34V-31M17 30Q14-10 0-31M37 30Q26-8 0-31M-37 14L35 18M-26-4L22 0"/></g><path d="M8 13L20-5" stroke="#f7f3df" stroke-width="2"/><circle cx="21" cy="-7" r="2" fill="none" stroke="#f7f3df"/></g></g>
-<!-- The race, currently under peer review. -->
-<g transform="translate(420 470) rotate(-5)"><path d="M-31 0Q104-25 210 4" stroke="#f5eed7" stroke-width="32" fill="none"/><path d="M-35-17Q102-44 216-11M-30 17Q104-7 209 20" stroke="#b9b493" stroke-width="1" stroke-dasharray="4 7" fill="none"/><g id="cover-maml" class="movable"><g class="racer" transform="translate(38 -4) scale(.67)"><use href="#snail"/></g></g><g transform="translate(118 -4) scale(.52)"><use href="#snail"/></g><path d="M209 9V-73" stroke="#7e795f" stroke-width="3"/><path d="M210-73Q228-80 247-69V-41Q228-53 210-45Z" fill="#f4ebd2"/><path d="M213-72L223-74V-63H213ZM233-74L244-69V-58L233-62ZM223-63L233-62V-51L223-53ZM213-54H223V-45H213ZM233-51L244-47V-42L233-46Z" fill="#777d64"/></g>
-<g id="cover-constitution" class="movable"><g transform="translate(587 365) rotate(-8)"><rect x="-15" y="-5" width="31" height="21" fill="#f6efd9"/><path d="M0-3V14M-11 1H-4M-11 5H-4M4 0H12M4 5H12" stroke="#a2a18a" stroke-width="1"/></g></g>
-<g transform="translate(375 373)"><path d="M0 0V-38" stroke="#8b8164" stroke-width="3"/><path d="M-27-52H22L32-41 22-30H-27Z" fill="#e3d7b6"/><text x="0" y="-38" font-size="8" fill="#746e5b" text-anchor="middle">ALMOST →</text></g>
-<g fill="#676f58" font-size="10" letter-spacing="2" text-anchor="middle"><text x="253" y="354">THE LITTLE LIBRARY</text><text x="901" y="316">MORE COMPUTE, MAYBE</text><text x="542" y="530">THE GREAT ACCELERATION</text></g>
-</svg><div id="books"></div><div id="hotspots"></div><span class="map-note">fig. 01 — please disturb the research</span></div></section>
-<section class="garden-tools" aria-label="Garden controls"><span class="explore-hint"><span class="spark">✳</span> Six little books. A few unlikely hiding places.</span><button id="hint">A little hint <span>↗</span></button><button id="motion" aria-pressed="false">Pause the breeze <span>Ⅱ</span></button></section>
-<div class="status-line"><span>ON THE GROUNDS TODAY</span><p id="status" aria-live="polite">The snails have requested more compute.</p><button id="next-status" aria-label="Next garden bulletin">↻</button></div>
-</main><footer><span>altman.si <span class="footer-divider">/</span> an independent internet daydream</span><button id="colophon">Made for the curious ↗</button></footer>
-<dialog id="dialog" aria-labelledby="dialog-title"><button id="close" aria-label="Close dialog">×</button><div id="dialog-content"></div></dialog><div id="toast" role="status"></div>
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f1e8" />
+    <meta
+      name="description"
+      content="A little garden for big questions. Explore a whimsical research institute, follow the world's slowest intelligence race, and discover real AI papers."
+    />
+    <title>The Institute of Almost Superintelligence</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#garden">Skip to the garden</a>
+    <header>
+      <a class="wordmark" href="./" aria-label="Almost Superintelligence home"
+        ><span class="seal">a<span>∴</span></span
+        ><span>ALMOST<br />SUPERINTELLIGENCE</span></a
+      >
+      <nav aria-label="Main">
+        <button id="about">A small introduction <span>↗</span></button
+        ><button id="notebook" class="notebook">
+          Field notes <span id="count">0 / 7</span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <div class="eyebrow">
+          <span class="dot"></span> THE INSTITUTE IS OPEN. PROGRESS IS
+          DEBATABLE.
+        </div>
+        <h1>The race can wait.</h1>
+        <p>
+          A little garden for very big questions. <br />Move things around.
+          There are good ideas hiding underneath.
+        </p>
+      </section>
+      <section
+        id="garden"
+        class="garden"
+        aria-label="Interactive research garden"
+      >
+        <div class="scene-wrap">
+          <svg
+            id="scene"
+            viewBox="100 110 1000 460"
+            role="img"
+            aria-label="An illustrated garden with a library, pond, greenhouse, haystack, and a very slow snail race"
+          >
+            <defs>
+              <filter id="rough">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency=".032"
+                  numOctaves="3"
+                  seed="8"
+                  result="noise"
+                />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+              </filter>
+              <filter id="soft"><feGaussianBlur stdDeviation="14" /></filter>
+              <filter id="grain">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency=".75"
+                  numOctaves="3"
+                  stitchTiles="stitch"
+                />
+                <feColorMatrix type="saturate" values="0" />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope=".15" />
+                </feComponentTransfer>
+                <feBlend in="SourceGraphic" mode="multiply" />
+              </filter>
+              <radialGradient id="grass">
+                <stop stop-color="#a9b78a" />
+                <stop offset=".72" stop-color="#bdc79e" />
+                <stop offset="1" stop-color="#d7dcc0" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="water" x2=".7" y2="1">
+                <stop stop-color="#86a9af" />
+                <stop offset="1" stop-color="#456f80" />
+              </linearGradient>
+              <g id="tree">
+                <path d="M0 0L3-83" stroke="#7d7858" stroke-width="6" />
+                <path
+                  d="M2-43L-16-64M2-52L20-73"
+                  stroke="#7d7858"
+                  stroke-width="3"
+                />
+                <g fill="#8c9c72" filter="url(#rough)">
+                  <ellipse cx="-10" cy="-86" rx="26" ry="34" />
+                  <ellipse cx="16" cy="-93" rx="26" ry="36" />
+                  <ellipse cx="4" cy="-115" rx="26" ry="33" />
+                </g>
+              </g>
+              <g id="flower">
+                <path d="M0 0L0-12" stroke="#869564" stroke-width="2" />
+                <circle cy="-14" r="4" fill="#e7dcbb" />
+                <circle cy="-14" r="1.5" fill="#bda058" />
+              </g>
+              <g id="snail">
+                <path
+                  d="M-20 9Q0 4 28 8L32-6M27 6L26-7"
+                  fill="none"
+                  stroke="#6f7761"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+                <circle cx="0" cy="-2" r="14" fill="#b77558" />
+                <path
+                  d="M6 6C-13 10-13-14 0-11S10 4 0 3S-5-5 0-3"
+                  fill="none"
+                  stroke="#e3ba89"
+                  stroke-width="2"
+                />
+                <circle cx="32" cy="-8" r="2" fill="#414c40" />
+                <circle cx="25" cy="-9" r="2" fill="#414c40" />
+              </g>
+            </defs>
+            <ellipse
+              cx="602"
+              cy="356"
+              rx="525"
+              ry="238"
+              fill="url(#grass)"
+              filter="url(#soft)"
+            />
+            <g filter="url(#rough)">
+              <path
+                d="M282 328Q427 341 461 411T727 415Q857 370 894 283"
+                fill="none"
+                stroke="#e1d7b9"
+                stroke-width="42"
+                stroke-linecap="round"
+              />
+              <path
+                d="M631 400Q637 302 696 257"
+                fill="none"
+                stroke="#e1d7b9"
+                stroke-width="28"
+              />
+              <path
+                d="M463 413Q411 470 327 477"
+                fill="none"
+                stroke="#e1d7b9"
+                stroke-width="23"
+              />
+            </g>
+            <g opacity=".17" fill="#5b6a46" filter="url(#soft)">
+              <ellipse cx="290" cy="327" rx="120" ry="20" />
+              <ellipse cx="891" cy="287" rx="90" ry="20" />
+              <ellipse cx="734" cy="266" rx="65" ry="14" />
+            </g>
+            <g id="vegetation"></g>
+            <g
+              aria-hidden="true"
+              opacity=".14"
+              fill="#526347"
+              filter="url(#soft)"
+            >
+              <ellipse cx="515" cy="310" rx="43" ry="8" />
+              <ellipse cx="699" cy="280" rx="27" ry="6" />
+              <ellipse cx="885" cy="279" rx="57" ry="7" />
+            </g>
+            <g id="pond-reeds" fill="none" stroke-linecap="round">
+              <g stroke="#8b9b72" stroke-width="1.5">
+                <path
+                  d="M738 406Q730 384 731 372M739 406Q745 381 752 378M730 400L720 379M928 371L929 341M931 374Q943 355 946 350M919 366L918 348M891 445L897 425M895 445L907 430"
+                />
+              </g>
+              <g stroke="#a68a66" stroke-width="3">
+                <path
+                  d="M731 375V368M752 380L755 373M929 345V337M945 353L948 346"
+                />
+              </g>
+            </g>
+            <g transform="translate(360 246) rotate(-8)" opacity=".85">
+              <path d="M0 0H36V7H0ZM3 11H35V16H3Z" fill="#ac9270" />
+              <path d="M5 5V26M31 5V26" stroke="#7b7b5e" stroke-width="2.3" />
+              <path d="M12-3V-10H18V-3Z" fill="#f3e6c8" />
+              <path
+                d="M18-8Q24-8 19-4"
+                fill="none"
+                stroke="#f3e6c8"
+                stroke-width="1.6"
+              />
+            </g>
+            <g transform="translate(614 191)">
+              <g class="butterfly">
+                <path d="M0 0Q-12-11-10-1T0 3Q12-11 10-1T0 0" fill="#dbc28d" />
+                <path d="M0-3V5" stroke="#9c8a64" stroke-width="1" />
+              </g>
+            </g>
+            <g transform="translate(407 402)">
+              <g class="butterfly butterfly-two">
+                <path d="M0 0Q-9-9-8-1T0 3Q9-9 8-1T0 0" fill="#e8d6bd" />
+                <path d="M0-2V4" stroke="#9c8a64" stroke-width="1" />
+              </g>
+            </g>
+            <!-- A modest library, with enough room for a few big ideas. -->
+            <g id="cover-attention" class="movable">
+              <g transform="translate(270 278)" filter="url(#rough)">
+                <path d="M-72-61L30-61 67-39V40L-72 40Z" fill="#e5d8b5" />
+                <path d="M30-61L67-39V40L30 22Z" fill="#c6ba97" />
+                <path d="M-88-61L-22-116 51-81 77-38 28-57Z" fill="#a56650" />
+                <path d="M-88-61L-22-116 28-57Z" fill="#bb8064" />
+                <path
+                  d="M-22-116L51-81M-68-62L-15-104M-44-62L-4-93M-20-61L7-81"
+                  stroke="#ce987b"
+                  stroke-width="2"
+                />
+                <path d="M-58-37H17V22H-58Z" fill="#696e59" />
+                <path
+                  d="M-60-9H19M-23-37V22"
+                  stroke="#ddd0a9"
+                  stroke-width="4"
+                />
+                <g stroke-width="7">
+                  <path d="M-40-29V-14M-31-34V-14" stroke="#b88364" />
+                  <g id="library-spine">
+                    <path d="M-50-32V-14" stroke="#bd7859" />
+                    <path
+                      d="M-53-28H-47M-53-18H-47"
+                      stroke="#e6c994"
+                      stroke-width="1"
+                    />
+                  </g>
+                  <path d="M-14-31V-14M-4-34V-14M7-30V-14" stroke="#a4b098" />
+                  <path d="M-50-3V18M-40 0V18M-30-2V18" stroke="#c6b881" />
+                  <path d="M-14 0V18M-4-3V18M7-1V18" stroke="#8ba3a4" />
+                </g>
+                <path d="M41-20L57-12V19L41 11Z" fill="#758476" />
+                <path d="M-83 41H43L55 49H-88Z" fill="#c2b392" />
+                <rect
+                  x="-65"
+                  y="-56"
+                  width="87"
+                  height="15"
+                  rx="1"
+                  fill="#f3e8c9"
+                />
+                <text
+                  x="-21"
+                  y="-45"
+                  text-anchor="middle"
+                  font-size="9"
+                  letter-spacing="2"
+                  fill="#6d6653"
+                >
+                  LIBRARY
+                </text>
+              </g>
+            </g>
+            <!-- A pond for reflecting, computationally or otherwise. -->
+            <g filter="url(#rough)">
+              <path
+                d="M720 429C691 389 747 327 827 331S959 346 961 393 886 463 815 456 752 461 720 429Z"
+                fill="#c9cbb0"
+              />
+              <path
+                d="M728 417C701 379 758 337 827 340S949 351 946 394 882 452 816 446 752 448 728 417Z"
+                fill="url(#water)"
+              />
+              <g fill="none" stroke="#b5ced0" opacity=".45">
+                <path
+                  d="M744 390Q777 382 802 389M850 366Q887 359 915 366M823 426Q858 418 886 423"
+                />
+                <ellipse cx="845" cy="390" rx="30" ry="9" />
+              </g>
+              <g id="cover-feedback" class="movable">
+                <g id="duck" transform="translate(845 388)">
+                  <path
+                    class="duck-wing far-wing"
+                    d="M-2 1Q-12-20 3-14L9 2"
+                    fill="#e3dfcd"
+                  />
+                  <ellipse rx="14" ry="8" fill="#f4eedb" />
+                  <path
+                    class="duck-wing near-wing"
+                    d="M0 0Q16-16 20-5L8 5Z"
+                    fill="#fff7e3"
+                  />
+                  <circle cx="-11" cy="-9" r="7" fill="#f4eedb" />
+                  <path d="M-16-11L-25-7-16-6" fill="#c99b51" />
+                  <circle cx="-13" cy="-11" r="1.1" fill="#52564a" />
+                  <path d="M5-3L19-8 13 2" fill="#e0dcc9" />
+                </g>
+              </g>
+              <ellipse cx="774" cy="416" rx="12" ry="5" fill="#869d70" />
+              <path d="M774 416L786 414" stroke="#52716a" />
+              <circle cx="773" cy="411" r="3" fill="#ead2bf" />
+            </g>
+            <!-- Compute greenhouse. -->
+            <g id="cover-fewshot" class="movable">
+              <g transform="translate(875 234)" filter="url(#rough)">
+                <path
+                  d="M-63-40L0-83 67-41V45H-63Z"
+                  fill="#a9c2af"
+                  fill-opacity=".68"
+                  stroke="#788875"
+                  stroke-width="3"
+                />
+                <path
+                  d="M0-83V5L67 45M-63-40L0 5 67-41M-32-62V24M32-62V24M-63 0L0 45 67 0M0 5V45"
+                  fill="none"
+                  stroke="#e1dfc5"
+                  stroke-width="3"
+                />
+                <path d="M-38-14H-16V29H-38Z" fill="#6c7c72" />
+                <path
+                  d="M-34-8H-20M-34 0H-20M-34 8H-20"
+                  stroke="#afbca0"
+                  stroke-width="2"
+                />
+                <circle cx="-22" cy="20" r="2" fill="#e0be70" />
+                <g id="greenhouse-plant">
+                  <path
+                    class="plant-roots"
+                    d="M16 18L10 33M16 18L20 36M16 18L29 28M16 24L6 28"
+                    fill="none"
+                    stroke="#9a805c"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M16 20Q5-22 18-39M16 7Q39-24 42-9M15 2Q-1-17 2-22"
+                    fill="none"
+                    stroke="#75865c"
+                    stroke-width="4"
+                  />
+                  <ellipse
+                    cx="14"
+                    cy="-25"
+                    rx="6"
+                    ry="11"
+                    fill="#8c9d6b"
+                    transform="rotate(-20 14 -25)"
+                  />
+                  <ellipse
+                    cx="32"
+                    cy="-8"
+                    rx="10"
+                    ry="5"
+                    fill="#91a170"
+                    transform="rotate(-32 32 -8)"
+                  />
+                </g>
+                <path d="M8 16H29L26 35H12Z" fill="#b57e62" />
+              </g>
+            </g>
+            <!-- Telescope. -->
+            <g
+              id="telescope-art"
+              transform="translate(688 244)"
+              stroke="#80795e"
+              stroke-width="4"
+              stroke-linecap="round"
+            >
+              <path d="M0 0L-23 39M0 0L20 40M0 0V37" />
+              <g transform="rotate(-32)">
+                <rect
+                  x="-29"
+                  y="-18"
+                  width="64"
+                  height="17"
+                  rx="4"
+                  fill="#bfa77e"
+                  stroke="none"
+                />
+                <path d="M32-20V1" stroke="#746e60" stroke-width="7" />
+                <path d="M-37-9H-29" stroke-width="8" />
+              </g>
+            </g>
+            <!-- Haystack. Surely nothing important in here. -->
+            <g id="cover-dpo" class="movable">
+              <g transform="translate(513 276)" filter="url(#rough)">
+                <path d="M-50 35Q-35-20 0-34 34-13 48 35Z" fill="#c9b574" />
+                <g stroke="#a99459" fill="none" stroke-width="1.5">
+                  <path
+                    d="M-40 31Q-15-5 0-31M-22 31Q-7-12 0-31M0 34V-31M17 30Q14-10 0-31M37 30Q26-8 0-31M-37 14L35 18M-26-4L22 0"
+                  />
+                </g>
+                <path d="M8 13L20-5" stroke="#f7f3df" stroke-width="2" />
+                <circle cx="21" cy="-7" r="2" fill="none" stroke="#f7f3df" />
+              </g>
+            </g>
+            <!-- The race, currently under peer review. -->
+            <g transform="translate(420 470) rotate(-5)">
+              <path
+                d="M-31 0Q104-25 210 4"
+                stroke="#f5eed7"
+                stroke-width="32"
+                fill="none"
+              />
+              <path
+                d="M-35-17Q102-44 216-11M-30 17Q104-7 209 20"
+                stroke="#b9b493"
+                stroke-width="1"
+                stroke-dasharray="4 7"
+                fill="none"
+              />
+              <g id="cover-maml" class="movable">
+                <g class="racer" transform="translate(38 -4) scale(.67)">
+                  <use href="#snail" />
+                </g>
+              </g>
+              <g transform="translate(118 -4) scale(.52)">
+                <use href="#snail" />
+              </g>
+              <path d="M209 9V-73" stroke="#7e795f" stroke-width="3" />
+              <path
+                d="M210-73Q228-80 247-69V-41Q228-53 210-45Z"
+                fill="#f4ebd2"
+              />
+              <path
+                d="M213-72L223-74V-63H213ZM233-74L244-69V-58L233-62ZM223-63L233-62V-51L223-53ZM213-54H223V-45H213ZM233-51L244-47V-42L233-46Z"
+                fill="#777d64"
+              />
+            </g>
+            <g id="cover-constitution" class="movable">
+              <g transform="translate(587 365) rotate(-8)">
+                <rect x="-15" y="-5" width="31" height="21" fill="#f6efd9" />
+                <path
+                  d="M0-3V14M-11 1H-4M-11 5H-4M4 0H12M4 5H12"
+                  stroke="#a2a18a"
+                  stroke-width="1"
+                />
+              </g>
+            </g>
+            <g transform="translate(375 373)">
+              <path d="M0 0V-38" stroke="#8b8164" stroke-width="3" />
+              <path d="M-27-52H22L32-41 22-30H-27Z" fill="#e3d7b6" />
+              <text
+                x="0"
+                y="-38"
+                font-size="8"
+                fill="#746e5b"
+                text-anchor="middle"
+              >
+                ALMOST →
+              </text>
+            </g>
+            <g
+              fill="#676f58"
+              font-size="10"
+              letter-spacing="2"
+              text-anchor="middle"
+            >
+              <text x="253" y="354">THE LITTLE LIBRARY</text>
+              <text x="901" y="316">MORE COMPUTE, MAYBE</text>
+              <text x="542" y="530">THE GREAT ACCELERATION</text>
+            </g>
+          </svg>
+          <div id="effects" aria-hidden="true"></div>
+          <div id="books"></div>
+          <div id="hotspots"></div>
+          <span class="map-note">fig. 01 — please disturb the research</span>
+        </div>
+      </section>
+      <section class="garden-tools" aria-label="Garden controls">
+        <span class="explore-hint"
+          ><span class="spark">✳</span> Seven little books. A few unlikely
+          hiding places.</span
+        ><button id="hint">A little hint <span>↗</span></button
+        ><button id="motion" aria-pressed="false">
+          Pause the breeze <span>Ⅱ</span>
+        </button>
+      </section>
+      <div class="status-line">
+        <span>ON THE GROUNDS TODAY</span>
+        <p id="status" aria-live="polite">
+          The snails have requested more compute.
+        </p>
+        <button id="next-status" aria-label="Next garden bulletin">↻</button>
+      </div>
+    </main>
+    <footer>
+      <span
+        >altman.si <span class="footer-divider">/</span> an independent internet
+        daydream</span
+      >
+      <div class="footer-links">
+        <button id="colophon">Made for the curious ↗</button
+        ><a
+          class="signature"
+          href="https://x.com/justinhouu"
+          target="_blank"
+          rel="noopener noreferrer"
+          >by @justinhouu ↗</a
+        >
+      </div>
+    </footer>
+    <dialog id="dialog" aria-labelledby="dialog-title">
+      <button id="close" aria-label="Close dialog">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

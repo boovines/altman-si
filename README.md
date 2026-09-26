@@ -1,6 +1,8 @@
 # The Institute of Almost Superintelligence
 
-A little garden for very big questions. An independent, lighthearted art website at https://altman.si with six discoverable AI papers, a persistent field notebook, and a very slow snail race.
+A little garden for very big questions. An independent, lighthearted art website at https://altman.si with seven discoverable AI papers, a persistent field notebook, and a very slow snail race.
+
+The haystack drags sideways; a library spine wobbles and pulls out; the greenhouse plant uproots; the duck panics three times before revealing its book; and a telescope opens a constellation field with a clickable book. Original field-book and snail discoveries remain. Touch and keyboard alternatives are supported. On narrow screens, the illustrated garden scrolls horizontally to preserve its scale.
 
 ## Run locally
 
